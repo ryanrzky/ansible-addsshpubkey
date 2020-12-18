@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: false
+
+  tasks:
+  - name: upload_public_key_to_root_user
+    authorized_key:
+      user: "your_user"
+      state: present
+      key: "{{ lookup('file', '~/your_file.pub') }}"
